@@ -892,3 +892,9 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+.copyright{
+  margin-top: 40px;
+}
+.developerName{
+  color: #16a34a;
+}
