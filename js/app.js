@@ -8,6 +8,7 @@ const useNumbers = document.querySelector("#use-numbers");
 const useSymbols = document.querySelector("#use-symbols");
 const generateButton = document.querySelector(".generate-button");
 const toast = document.getElementById("toast");
+const copyButton = document.querySelector(".copy-button");
 
 const uppercase_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowercase_letters = "abcdefghijklmnopqrstuvwxyz";
@@ -72,6 +73,24 @@ function genreatPassword() {
 }
 
 generateButton.addEventListener("click", genreatPassword);
+
+copyButton.addEventListener("click", function () {
+  if (generatedPassword.textContent) {
+    const textToCopy = generatedPassword.textContent;
+    navigator.clipboard.writeText(textToCopy);
+    toast.classList.add("show");
+    toast.innerHTML = "متن با موفقیت کپی شد";
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 3000);
+  } else {
+    toast.classList.add("show");
+    toast.innerHTML = "ابتدا یک پسورد ایجاد کنید";
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 3000);
+  }
+});
 rangeCounter.addEventListener("change", function () {
   currentRange = rangeCounter.value;
   charactersCount.innerHTML = currentRange;
